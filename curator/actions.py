@@ -1035,8 +1035,8 @@ class Rollover(object):
 
         # Verify that `conditions` and `settings` are good?
         # Verify that `name` is an alias, and is only mapped to one index.
-        if utils.rollable_alias(client, name):
-            self.name = name
+        if utils.rollable_alias(client, utils.parse_date_pattern(name)):
+            self.name = utils.parse_date_pattern(name)
         else:
             raise ValueError(
                 'Unable to perform index rollover with alias '
